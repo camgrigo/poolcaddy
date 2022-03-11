@@ -10,6 +10,8 @@
 		C1156136277AEC930066B87A /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1156135277AEC930066B87A /* ClientsView.swift */; };
 		C11C730D27CF451900D50487 /* NewRouteStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11C730C27CF451900D50487 /* NewRouteStop.swift */; };
 		C1297BAE278D615D0020868C /* RouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1297BAD278D615D0020868C /* RouteView.swift */; };
+		C12EBDBD27D813370018631B /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12EBDBC27D813370018631B /* Localization.swift */; };
+		C14D19DD27D4A209000EA75D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C14D19DC27D4A209000EA75D /* Localizable.strings */; };
 		C16F66762791515D0090195C /* ClientsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16F66752791515D0090195C /* ClientsPicker.swift */; };
 		C17128C0278E6A190098DFF5 /* Model.Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17128BF278E6A190098DFF5 /* Model.Extensions.swift */; };
 		C17BE5DE2790D07C004A62CA /* RouteStopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17BE5DD2790D07C004A62CA /* RouteStopDetailView.swift */; };
@@ -28,6 +30,8 @@
 		C1156135277AEC930066B87A /* ClientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsView.swift; sourceTree = "<group>"; };
 		C11C730C27CF451900D50487 /* NewRouteStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRouteStop.swift; sourceTree = "<group>"; };
 		C1297BAD278D615D0020868C /* RouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteView.swift; sourceTree = "<group>"; };
+		C12EBDBC27D813370018631B /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		C14D19DC27D4A209000EA75D /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C16F66752791515D0090195C /* ClientsPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsPicker.swift; sourceTree = "<group>"; };
 		C17128BF278E6A190098DFF5 /* Model.Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.Extensions.swift; sourceTree = "<group>"; };
 		C17BE5DD2790D07C004A62CA /* RouteStopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStopDetailView.swift; sourceTree = "<group>"; };
@@ -54,6 +58,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C12EBDBE27D8133D0018631B /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				C14D19DC27D4A209000EA75D /* Localizable.strings */,
+				C12EBDBC27D813370018631B /* Localization.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		C17128BE278E6A0E0098DFF5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +106,7 @@
 				C17128BF278E6A190098DFF5 /* Model.Extensions.swift */,
 				C17128BE278E6A0E0098DFF5 /* Views */,
 				C1FF767D2772A57E00169706 /* Assets.xcassets */,
+				C12EBDBE27D8133D0018631B /* Localization */,
 				C1FF76822772A57E00169706 /* Persistence.swift */,
 				C1FF76842772A57E00169706 /* Pool_Caddy.xcdatamodeld */,
 				C1FF767F2772A57E00169706 /* Preview Content */,
@@ -171,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1FF76812772A57E00169706 /* Preview Assets.xcassets in Resources */,
+				C14D19DD27D4A209000EA75D /* Localizable.strings in Resources */,
 				C1FF767E2772A57E00169706 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,6 +199,7 @@
 			files = (
 				C11C730D27CF451900D50487 /* NewRouteStop.swift in Sources */,
 				C1FF76832772A57E00169706 /* Persistence.swift in Sources */,
+				C12EBDBD27D813370018631B /* Localization.swift in Sources */,
 				C1C856782772D85900325A6B /* DashboardView.swift in Sources */,
 				C1C41D132786C12F00B016F6 /* NewClientView.swift in Sources */,
 				C1297BAE278D615D0020868C /* RouteView.swift in Sources */,

@@ -24,6 +24,7 @@ struct ClientsPicker: View {
                     }
                     .frame(minWidth: 200, minHeight: 44)
                     .buttonStyle(.bordered)
+                    .tint(.accentColor)
                 }
             }
         }

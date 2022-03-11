@@ -20,10 +20,33 @@ struct Pool_CaddyApp: App {
     
     @State private var selectedTab = Tab.dashboard
     
+    
+    
+    
+    @FetchRequest(entity: Route.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Route.date, ascending: false)])
+    private var routes: FetchedResults<Route>
+    
+    @State private var route: Route?
+    @State private var isShowingRoutePicker = false
+    
     var body: some Scene {
         WindowGroup {
-            DashboardView()
+            DashboardView(route: route  ?? PersistenceController.shared.createRoute(date: Date())!)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .sheet(isPresented: $isShowingRoutePicker) {
+                    List(routes) { route in
+                        Text(route.date?.formatted(date: .complete, time: .omitted) ?? "Route")
+                            .onTapGesture {
+                                self.route = route
+                            }
+                    }
+                }
+                .onAppear {
+                    route = (routes.first {
+                        guard let date = $0.date else { return false }
+                        return Calendar.current.isDate(date, inSameDayAs: Date())
+                    })
+                }
         }
     }
     

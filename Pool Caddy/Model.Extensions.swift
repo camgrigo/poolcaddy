@@ -80,7 +80,9 @@ extension Route {
     
     func delete(_ stop: RouteStop) {
         var copy = stopsList
-        copy.remove(at: copy.firstIndex(of: stop)!)
+        if let index = copy.firstIndex(of: stop) {
+            copy.remove(at: index)
+        }
         setStopsOrder(copy)
         managedObjectContext?.delete(stop)
     }

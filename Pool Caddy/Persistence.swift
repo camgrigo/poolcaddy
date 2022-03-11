@@ -58,6 +58,7 @@ struct PersistenceController {
         let newRoute = Route(context: container.viewContext)
         
         newRoute.date = date
+        newRoute.setStopsOrder([])
         
         do {
             try container.viewContext.save()
@@ -67,6 +68,19 @@ struct PersistenceController {
             // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+    }
+    
+    func addRouteStop(client: Client, route: Route) async {
+        let routeStop = RouteStop(context: container.viewContext)
+        routeStop.id = UUID()
+        routeStop.client = client
+        route.add(routeStop)
+        
+        do {
+            try container.viewContext.save()
+        } catch {
+            print("Error")
         }
     }
     

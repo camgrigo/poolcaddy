@@ -7,46 +7,56 @@
 
 import SwiftUI
 
-struct RouteList: View {
+extension Route {
     
-    @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(entity: Route.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Route.date, ascending: false)])
-    private var routes: FetchedResults<Route>
-    
-    var body: some View {
-        List {
-            ForEach(routes) { route in
-                RouteListSection(route: route)
-            }
-        }
-        .listStyle(.plain)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                EditButton()
-            }
+    var _date: Binding<Date> {
+        Binding {
+            self.date ?? Date()
+        } set: {
+            self.date = $0
+            PersistenceController.shared.saveContext()
         }
     }
     
 }
 
-struct RouteListSection: View {
+struct RouteDetailsView: View {
     
     @ObservedObject var route: Route
     
-    private var title: String {
-        route.date?
-            .formatted(date: .complete, time: .omitted) ?? String()
+    var body: some View {
+        DatePicker(.datePickerLabel, selection: route._date, displayedComponents: .date)
+        Toggle(isOn: route.isLockedBinding) {
+            Label(.viewOnlyLabel, systemImage: "eye")
+        }
+        Button(role: .destructive) {
+            
+        } label: {
+            Label(.deleteLabel, systemImage: "trash")
+        }
     }
     
+}
+
+struct RouteStopsList: View {
+    
+    enum Field: Hashable {
+        case none
+        case new
+        case row(id: UUID)
+    }
+    
+    @ObservedObject var route: Route
+    
+    @FocusState var focusedField: Field?
+    
     var body: some View {
-        Section(title) {
-            ForEach(route.stopsList) { stop in
-                StopRow(route: route, stop: stop)
-            }
-            .onMove(perform: route.move(_:_:))
-            .onDelete(perform: route.delete(_:))
-            NewStopRow(route: route)
+        ForEach(route.stopsList) { stop in
+            StopRow(route: route, stop: stop)
+                .focused($focusedField, equals: .row(id: stop.id!))
         }
+        .onMove(perform: route.move(_:_:))
+        .onDelete(perform: route.delete(_:))
     }
     
 }
